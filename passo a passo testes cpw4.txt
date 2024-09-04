@@ -1,0 +1,18 @@
+CPW4 - TESTES 
+
+1 - DESANEXAR DO REPOSITORIO
+
+	- apagar pasta .git do projeto ou digitar o comando git remote rm origin
+	- digitar o comando git init
+	- digitar o comando git checkout -b dev
+	- digitar git add .
+	- digitar git commit -m "commit inicial"
+
+2 - INICIALIZAR O YARN
+3 - YARN START
+4 - INSTALAR O CYPRESS yarn add -D cypress
+5 - NO PACKAGE JSON CRIAR O SCRIPT
+	- "cy:open": "cypress open"
+	- "cy:run": "cypress run --component && cypress run --e2e"
+
+	TOKEN_CICD_TODOS (VERCEL) - kwkzAfzv3uf08g4EYgVc4F3n
