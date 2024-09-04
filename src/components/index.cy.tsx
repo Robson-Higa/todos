@@ -2,20 +2,27 @@ import { TaskType } from "../models/TaskType";
 import { Todo } from "../models/Todo";
 import TodoCard from "./TodoCard";
 
-describe("TodoCard />", () => {
+describe("<TodoCard />", () => {
+  it("should render todo data correctly", () => {
+    const todo: Todo = {
+      deadline: new Date(),
+      description: "Limpar a casa",
+      taskType: TaskType.CLEANING,
+    };
+    cy.mount(<TodoCard todo={todo} />);
 
-    it("should render todo data correctly", () => {
-        const todo: Todo = {
-            deadline: new Date(),
-            description: "Limpar a casa",
-            taskType: TaskType.CLEANING,
-        }
-        cy.mount(<TodoCard todo={todo} />);
+    cy.get('[data-cy="task-type"]')
+      .invoke("attr", "alt")
+      .should("eq", todo.taskType);
 
-        cy.get('[data-cy="task-type"]').invoke("attr", "alt").should("eq", todo.taskType);
-        
-        cy.get('[data-cy="task-description"]').should("have.text", todo.description);
+    cy.get('[data-cy="task-description"]').should(
+      "have.text",
+      todo.description
+    );
 
-        cy.get('[data-cy="task-deadline"]').should("have.text", todo.deadline.toLocaleDateString);
-    });
+    cy.get('[data-cy="task-deadline"]').should(
+      "have.text",
+      todo.deadline.toLocaleDateString()
+    );
+  });
 });
